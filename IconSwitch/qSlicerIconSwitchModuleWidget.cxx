@@ -63,31 +63,3 @@ void qSlicerIconSwitchModuleWidget::setup()
   d->setupUi(this);
   this->Superclass::setup();
 }
-
-//-----------------------------------------------------------------------------
-void qSlicerIconSwitchModuleWidget::useDarkIcon()
-{
-  QResource::unregisterResource(this->currentResource.c_str());
-  vtkSlicerIconSwitchLogic* iconSwitchLogic = vtkSlicerIconSwitchLogic::SafeDownCast(this->logic());
-  std::string path = iconSwitchLogic->GetDarkResourcePath();
-  auto res = QResource::registerResource(path.c_str());
-  this->currentResource = path;
-}
-
-//-----------------------------------------------------------------------------
-void qSlicerIconSwitchModuleWidget::useLightIcon()
-{
-  QResource::unregisterResource(this->currentResource.c_str());
-  vtkSlicerIconSwitchLogic* iconSwitchLogic = vtkSlicerIconSwitchLogic::SafeDownCast(this->logic());
-  std::string path = iconSwitchLogic->GetLightResourcePath();
-  auto res = QResource::registerResource(path.c_str());
-  this->currentResource = path;
-}
-
-
-void qSlicerIconSwitchModuleWidget::registerDefaultResources()
-{
-  vtkSlicerIconSwitchLogic* iconSwitchLogic = vtkSlicerIconSwitchLogic::SafeDownCast(this->logic());
-  std::string path = iconSwitchLogic->GetDefaultResourcePath();
-  QResource::registerResource(path.c_str());
-}

@@ -45,7 +45,6 @@ public:
   void PrintSelf(ostream& os, vtkIndent indent) override;
   std::string GetDarkResourcePath();
   std::string GetLightResourcePath();
-  std::string GetDefaultResourcePath();
 
 protected:
   vtkSlicerIconSwitchLogic();

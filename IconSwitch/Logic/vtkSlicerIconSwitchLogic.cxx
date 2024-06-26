@@ -95,10 +95,3 @@ std::string vtkSlicerIconSwitchLogic::GetDarkResourcePath()
   std::string darkResourcePath = this->GetModuleShareDirectory() + "/Icons/DarkResource.rcc";
   return darkResourcePath;
 }
-
-//---------------------------------------------------------------------------
-std::string vtkSlicerIconSwitchLogic::GetDefaultResourcePath()
-{
-  std::string defaultResourcePath = this->GetModuleShareDirectory() + "/qSlicerIconSwitchModule.rcc";
-  return defaultResourcePath;
-}

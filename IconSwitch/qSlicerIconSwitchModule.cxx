@@ -99,8 +99,7 @@ void qSlicerIconSwitchModule::setup()
   this->Superclass::setup();
 
   vtkSlicerIconSwitchLogic* iconSwitchLogic = vtkSlicerIconSwitchLogic::SafeDownCast(this->logic());
-  std::string pathDefault = iconSwitchLogic->GetDefaultResourcePath();
-  QResource::registerResource(pathDefault.c_str());
+
   QSettings settings;
   QSettings settingsRegistry("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", QSettings::NativeFormat);
 

@@ -67,8 +67,8 @@ slicerMacroBuildLoadableModule(
   )
 
 
-qt5_add_binary_resources(LightResource ${LIGHT_ICON_RESOURCE} DESTINATION ${CMAKE_BINARY_DIR}/${Slicer_QTLOADABLEMODULES_SHARE_DIR}/Icons/LightResource.rcc)
-qt5_add_binary_resources(DarkResource ${DARK_ICON_RESOURCE} DESTINATION ${CMAKE_BINARY_DIR}/${Slicer_QTLOADABLEMODULES_SHARE_DIR}/Icons/DarkResource.rcc)
+qt5_add_binary_resources(LightResource ${LIGHT_ICON_RESOURCE} DESTINATION ${CMAKE_BINARY_DIR}/${Slicer_QTLOADABLEMODULES_SHARE_DIR}/${MODULE_NAME}/Icons/LightResource.rcc)
+qt5_add_binary_resources(DarkResource ${DARK_ICON_RESOURCE} DESTINATION ${CMAKE_BINARY_DIR}/${Slicer_QTLOADABLEMODULES_SHARE_DIR}/${MODULE_NAME}/Icons/DarkResource.rcc)
 add_dependencies(qSlicer${MODULE_NAME}Module LightResource DarkResource)
 
 #-----------------------------------------------------------------------------

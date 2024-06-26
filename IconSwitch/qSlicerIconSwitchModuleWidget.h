@@ -40,7 +40,7 @@ public:
 public slots:
   void goToLightStyle();
   void goToDarkStyle();
-  void addButton(QString iconPath);
+  void addIconDisplay(QString iconPath);
 
 protected:
   QScopedPointer<qSlicerIconSwitchModuleWidgetPrivate> d_ptr;

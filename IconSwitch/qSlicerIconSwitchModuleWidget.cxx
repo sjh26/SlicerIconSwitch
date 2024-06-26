@@ -20,6 +20,8 @@
 #include <QSettings>
 #include <QPushButton>
 #include <QIcon>
+#include <QMessageBox>
+#include <ctkMessageBox.h>
 
 // Slicer includes
 #include "qSlicerIconSwitchModuleWidget.h"
@@ -66,14 +68,15 @@ void qSlicerIconSwitchModuleWidget::setup()
   this->Superclass::setup();
   this->connect(d->lightButton, SIGNAL(clicked()), SLOT(goToLightStyle()));
   this->connect(d->darkButton, SIGNAL(clicked()), SLOT(goToDarkStyle()));
-  this->addButton(":/Icons/MarkupsAddAngle.svg");
-  this->addButton(":/Icons/MarkupsAddLine.svg");
-  this->addButton(":/Icons/MarkupsAddROI.svg");
-  this->addButton(":/Icons/MarkupsAddClosedCurve.svg");
-  this->addButton(":/Icons/MarkupsAddOpenCurve.svg");
-  this->addButton(":/Icons/MarkupsAddPlane.svg");
-  this->addButton(":/Icons/MarkupsAddPoint.svg");
-  this->addButton(":/Icons/MarkupsAddPointList.svg");
+  this->addIconDisplay(":/Icons/MarkupsAddAngle.svg");
+  this->addIconDisplay(":/Icons/MarkupsAddLine.svg");
+  this->addIconDisplay(":/Icons/MarkupsAddROI.svg");
+  this->addIconDisplay(":/Icons/MarkupsAddClosedCurve.svg");
+  this->addIconDisplay(":/Icons/MarkupsAddOpenCurve.svg");
+  this->addIconDisplay(":/Icons/MarkupsAddPlane.svg");
+  this->addIconDisplay(":/Icons/MarkupsAddPoint.svg");
+  this->addIconDisplay(":/Icons/MarkupsAddPointList.svg");
+  this->addIconDisplay(":/Icons/IconSwitch.png");
 
 }
 
@@ -89,7 +92,18 @@ void qSlicerIconSwitchModuleWidget::goToDarkStyle()
   }
 
   settingsApplication.setValue("Styles/Style", "Dark Slicer");
-  qSlicerApplication::application()->confirmRestart("Would you like to restart 3D Slicer to reload icons?");
+  QString reason = "Would you like to restart 3D Slicer to reload style and icons?";
+  ctkMessageBox* confirmDialog = new ctkMessageBox(this);
+  confirmDialog->setText(reason);
+  confirmDialog->setIcon(QMessageBox::Question);
+  confirmDialog->setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+  bool restartConfirmed = (confirmDialog->exec() == QMessageBox::Ok);
+  confirmDialog->deleteLater();
+
+  if (restartConfirmed)
+  {
+    qSlicerApplication::application()->restart();
+  }
 }
 
 //-----------------------------------------------------------------------------
@@ -103,12 +117,23 @@ void qSlicerIconSwitchModuleWidget::goToLightStyle()
   }
 
   settingsApplication.setValue("Styles/Style", "Light Slicer");
-  qSlicerApplication::application()->confirmRestart("Would you like to restart 3D Slicer to reload icons?");
+  QString reason = "Would you like to restart 3D Slicer to reload style and icons?";
+  ctkMessageBox* confirmDialog = new ctkMessageBox(this);
+  confirmDialog->setText(reason);
+  confirmDialog->setIcon(QMessageBox::Question);
+  confirmDialog->setStandardButtons(QMessageBox::Ok | QMessageBox::Cancel);
+  bool restartConfirmed = (confirmDialog->exec() == QMessageBox::Ok);
+  confirmDialog->deleteLater();
+
+  if (restartConfirmed)
+  {
+    qSlicerApplication::application()->restart();
+  }
 }
 
 //-----------------------------------------------------------------------------
 
-void qSlicerIconSwitchModuleWidget::addButton(QString iconPath)
+void qSlicerIconSwitchModuleWidget::addIconDisplay(QString iconPath)
 {
   Q_D(qSlicerIconSwitchModuleWidget);
   QPushButton* button = new QPushButton();

@@ -60,6 +60,7 @@ qSlicerIconSwitchModuleWidget::~qSlicerIconSwitchModuleWidget()
 void qSlicerIconSwitchModuleWidget::setup()
 {
   Q_D(qSlicerIconSwitchModuleWidget);
+  this->registerDefaultResources();
 
   QSettings settings;
   QSettings settingsRegistry("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", QSettings::NativeFormat);
@@ -112,4 +113,12 @@ void qSlicerIconSwitchModuleWidget::useLightIcon()
   std::string path = iconSwitchLogic->GetLightResourcePath();
   auto res = QResource::registerResource(path.c_str());
   this->currentResource = path;
+}
+
+
+void qSlicerIconSwitchModuleWidget::registerDefaultResources()
+{
+  vtkSlicerIconSwitchLogic* iconSwitchLogic = vtkSlicerIconSwitchLogic::SafeDownCast(this->logic());
+  std::string path = iconSwitchLogic->GetDefaultResourcePath();
+  QResource::registerResource(path.c_str());
 }

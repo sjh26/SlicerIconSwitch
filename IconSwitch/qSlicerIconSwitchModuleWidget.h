@@ -52,6 +52,7 @@ private:
   Q_DECLARE_PRIVATE(qSlicerIconSwitchModuleWidget);
   Q_DISABLE_COPY(qSlicerIconSwitchModuleWidget);
   std::string currentResource;
+  void registerDefaultResources();
 };
 
 #endif

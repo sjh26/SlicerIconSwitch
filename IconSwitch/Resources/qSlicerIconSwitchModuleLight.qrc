@@ -8,5 +8,6 @@
         <file alias="MarkupsAddPoint.svg">Icons/Light/MarkupsAddPoint.svg</file>
         <file alias="MarkupsAddPointList.svg">Icons/Light/MarkupsAddPointList.svg</file>
         <file alias="MarkupsAddROI.svg">Icons/Light/MarkupsAddROI.svg</file>
+        <file alias="IconSwitch.png">Icons/Light/IconSwitch.png</file>
   </qresource>
 </RCC>

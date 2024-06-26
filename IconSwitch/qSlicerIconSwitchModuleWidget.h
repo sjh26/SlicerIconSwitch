@@ -39,6 +39,9 @@ public:
 
 public slots:
 
+  void useLightIcon();
+  void useDarkIcon();
+
 
 protected:
   QScopedPointer<qSlicerIconSwitchModuleWidgetPrivate> d_ptr;
@@ -48,6 +51,7 @@ protected:
 private:
   Q_DECLARE_PRIVATE(qSlicerIconSwitchModuleWidget);
   Q_DISABLE_COPY(qSlicerIconSwitchModuleWidget);
+  std::string currentResource;
 };
 
 #endif

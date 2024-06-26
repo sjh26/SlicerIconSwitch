@@ -13,32 +13,33 @@
   <property name="windowTitle">
    <string>IconSwitch</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <widget class="QPushButton" name="pushButton_3">
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QPushButton" name="lightButton">
      <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normalon>:/Icons/MarkupsAddAngle.svg</normalon>
-      </iconset>
+      <string>Change to Light</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="1">
-    <widget class="QPushButton" name="pushButton_4">
+   <item>
+    <widget class="QPushButton" name="darkButton">
      <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normalon>:/Icons/IconSwitch.png</normalon>
-      </iconset>
+      <string>Change to Dark</string>
      </property>
     </widget>
    </item>
-   <item row="4" column="0">
+   <item>
+    <widget class="QFrame" name="iconDisplayFrame">
+     <property name="frameShape">
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2"/>
+    </widget>
+   </item>
+   <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -50,78 +51,6 @@
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="2" column="0">
-    <widget class="QPushButton" name="pushButton_5">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normalon>:/Icons/MarkupsAddLine.svg</normalon>
-      </iconset>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="1">
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normalon>:/Icons/MarkupsAddOpenCurve.svg</normalon>
-      </iconset>
-     </property>
-    </widget>
-   </item>
-   <item row="2" column="1">
-    <widget class="QPushButton" name="pushButton_6">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normalon>:/Icons/MarkupsAddPlane.svg</normalon>
-      </iconset>
-     </property>
-    </widget>
-   </item>
-   <item row="0" column="0">
-    <widget class="QPushButton" name="pushButton">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normalon>:/Icons/MarkupsAddPoint.svg</normalon>
-      </iconset>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="0">
-    <widget class="QPushButton" name="pushButton_7">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normalon>:/Icons/MarkupsAddPointList.svg</normalon>
-      </iconset>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="QPushButton" name="pushButton_8">
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset>
-       <normalon>:/Icons/MarkupsAddROI.svg</normalon>
-      </iconset>
-     </property>
-    </widget>
    </item>
   </layout>
  </widget>

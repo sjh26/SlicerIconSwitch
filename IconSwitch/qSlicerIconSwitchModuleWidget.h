@@ -38,7 +38,9 @@ public:
   virtual ~qSlicerIconSwitchModuleWidget();
 
 public slots:
-
+  void goToLightStyle();
+  void goToDarkStyle();
+  void addButton(QString iconPath);
 
 protected:
   QScopedPointer<qSlicerIconSwitchModuleWidgetPrivate> d_ptr;

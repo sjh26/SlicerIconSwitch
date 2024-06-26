@@ -17,13 +17,15 @@
 
 // Qt includes
 #include <QDebug>
-#include <QResource>
 #include <QSettings>
+#include <QPushButton>
+#include <QIcon>
 
 // Slicer includes
 #include "qSlicerIconSwitchModuleWidget.h"
 #include "ui_qSlicerIconSwitchModuleWidget.h"
 #include "vtkSlicerIconSwitchLogic.h"
+#include "qSlicerApplication.h"
 
 
 //-----------------------------------------------------------------------------
@@ -62,4 +64,54 @@ void qSlicerIconSwitchModuleWidget::setup()
   Q_D(qSlicerIconSwitchModuleWidget);
   d->setupUi(this);
   this->Superclass::setup();
+  this->connect(d->lightButton, SIGNAL(clicked()), SLOT(goToLightStyle()));
+  this->connect(d->darkButton, SIGNAL(clicked()), SLOT(goToDarkStyle()));
+  this->addButton(":/Icons/MarkupsAddAngle.svg");
+  this->addButton(":/Icons/MarkupsAddLine.svg");
+  this->addButton(":/Icons/MarkupsAddROI.svg");
+  this->addButton(":/Icons/MarkupsAddClosedCurve.svg");
+  this->addButton(":/Icons/MarkupsAddOpenCurve.svg");
+  this->addButton(":/Icons/MarkupsAddPlane.svg");
+  this->addButton(":/Icons/MarkupsAddPoint.svg");
+  this->addButton(":/Icons/MarkupsAddPointList.svg");
+
+}
+
+//-----------------------------------------------------------------------------
+void qSlicerIconSwitchModuleWidget::goToDarkStyle()
+{
+  QSettings settingsApplication;
+  auto currentStyle = settingsApplication.value("Styles/Style", "Slicer").toString();
+
+  if (currentStyle == "Dark Slicer")
+  {
+    return;
+  }
+
+  settingsApplication.setValue("Styles/Style", "Dark Slicer");
+  qSlicerApplication::application()->confirmRestart("Would you like to restart 3D Slicer to reload icons?");
+}
+
+//-----------------------------------------------------------------------------
+void qSlicerIconSwitchModuleWidget::goToLightStyle()
+{
+  QSettings settingsApplication;
+  auto currentStyle = settingsApplication.value("Styles/Style", "Slicer").toString();
+  if (currentStyle == "Light Slicer")
+  {
+    return;
+  }
+
+  settingsApplication.setValue("Styles/Style", "Light Slicer");
+  qSlicerApplication::application()->confirmRestart("Would you like to restart 3D Slicer to reload icons?");
+}
+
+//-----------------------------------------------------------------------------
+
+void qSlicerIconSwitchModuleWidget::addButton(QString iconPath)
+{
+  Q_D(qSlicerIconSwitchModuleWidget);
+  QPushButton* button = new QPushButton();
+  button->setIcon(QIcon(iconPath));
+  d->iconDisplayFrame->layout()->addWidget(button);
 }

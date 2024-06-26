@@ -82,16 +82,3 @@ void vtkSlicerIconSwitchLogic
 {
 }
 
-//---------------------------------------------------------------------------
-std::string vtkSlicerIconSwitchLogic::GetLightResourcePath()
-{
-  std::string lightResourcePath = this->GetModuleShareDirectory() + "/Icons/LightResource.rcc";
-  return lightResourcePath;
-}
-
-//---------------------------------------------------------------------------
-std::string vtkSlicerIconSwitchLogic::GetDarkResourcePath()
-{
-  std::string darkResourcePath = this->GetModuleShareDirectory() + "/Icons/DarkResource.rcc";
-  return darkResourcePath;
-}

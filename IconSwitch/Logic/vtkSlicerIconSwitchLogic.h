@@ -43,8 +43,6 @@ public:
   static vtkSlicerIconSwitchLogic *New();
   vtkTypeMacro(vtkSlicerIconSwitchLogic, vtkSlicerModuleLogic);
   void PrintSelf(ostream& os, vtkIndent indent) override;
-  std::string GetDarkResourcePath();
-  std::string GetLightResourcePath();
 
 protected:
   vtkSlicerIconSwitchLogic();

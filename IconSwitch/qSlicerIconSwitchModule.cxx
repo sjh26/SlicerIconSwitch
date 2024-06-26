@@ -103,11 +103,11 @@ void qSlicerIconSwitchModule::setup()
   QSettings settings;
   QSettings settingsRegistry("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", QSettings::NativeFormat);
 
-  std::string path = iconSwitchLogic->GetLightResourcePath();
+  std::string path = iconSwitchLogic->GetModuleShareDirectory() + "/Icons/LightResource.rcc";
 
   if (settings.value("Styles/Style", "Slicer").toString() == "Dark Slicer")
   {
-    path = iconSwitchLogic->GetDarkResourcePath();
+    path = iconSwitchLogic->GetModuleShareDirectory() + "/Icons/DarkResource.rcc";
 
   }
   else if (settings.value("Styles/Style", "Slicer").toString() == "Slicer")
@@ -115,7 +115,7 @@ void qSlicerIconSwitchModule::setup()
 #ifdef Q_OS_WIN
     if (settingsRegistry.value("AppsUseLightTheme") == 0)
     {
-      path = iconSwitchLogic->GetDarkResourcePath();
+      path = iconSwitchLogic->GetModuleShareDirectory() + "/Icons/DarkResource.rcc";
     }
 #endif
   }

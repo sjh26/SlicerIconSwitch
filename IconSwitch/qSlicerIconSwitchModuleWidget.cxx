@@ -17,10 +17,13 @@
 
 // Qt includes
 #include <QDebug>
+#include <QResource>
 
 // Slicer includes
 #include "qSlicerIconSwitchModuleWidget.h"
 #include "ui_qSlicerIconSwitchModuleWidget.h"
+#include "vtkSlicerIconSwitchLogic.h"
+
 
 //-----------------------------------------------------------------------------
 class qSlicerIconSwitchModuleWidgetPrivate: public Ui_qSlicerIconSwitchModuleWidget
@@ -56,6 +59,13 @@ qSlicerIconSwitchModuleWidget::~qSlicerIconSwitchModuleWidget()
 void qSlicerIconSwitchModuleWidget::setup()
 {
   Q_D(qSlicerIconSwitchModuleWidget);
+  
+
+  vtkSlicerIconSwitchLogic* iconSwitchLogic = vtkSlicerIconSwitchLogic::SafeDownCast(this->logic());
+  auto res = QResource::registerResource(iconSwitchLogic->GetDarkResourcePath().c_str());
+  std::cout << "Resource registered: " << res << std::endl;
+
+
   d->setupUi(this);
   this->Superclass::setup();
 }

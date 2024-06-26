@@ -50,6 +50,8 @@ protected:
 private:
   Q_DECLARE_PRIVATE(qSlicerIconSwitchModuleWidget);
   Q_DISABLE_COPY(qSlicerIconSwitchModuleWidget);
+  int nextAvailableRowForIconDisplay;
+  int nextAvailableColumnForIconDisplay;
 };
 
 #endif

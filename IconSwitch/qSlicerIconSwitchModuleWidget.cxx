@@ -52,6 +52,8 @@ qSlicerIconSwitchModuleWidgetPrivate::qSlicerIconSwitchModuleWidgetPrivate()
 qSlicerIconSwitchModuleWidget::qSlicerIconSwitchModuleWidget(QWidget* _parent)
   : Superclass( _parent )
   , d_ptr( new qSlicerIconSwitchModuleWidgetPrivate )
+  , nextAvailableColumnForIconDisplay(0)
+  , nextAvailableRowForIconDisplay(0)
 {
 }
 
@@ -77,6 +79,15 @@ void qSlicerIconSwitchModuleWidget::setup()
   this->addIconDisplay(":/Icons/MarkupsAddPoint.svg");
   this->addIconDisplay(":/Icons/MarkupsAddPointList.svg");
   this->addIconDisplay(":/Icons/IconSwitch.png");
+  this->addIconDisplay(":/Icons/Annotations.svg");
+  this->addIconDisplay(":/Icons/DataModule.svg");
+  this->addIconDisplay(":/Icons/DefaultModule.svg");
+  this->addIconDisplay(":/Icons/MarkupsModule.svg");
+  this->addIconDisplay(":/Icons/ModelsModule.svg");
+  this->addIconDisplay(":/Icons/SegmentEditorModule.svg");
+  this->addIconDisplay(":/Icons/TransformsModule.svg");
+  this->addIconDisplay(":/Icons/VolumesModule.svg");
+  this->addIconDisplay(":/Icons/WelcomeModule.svg");
 
 }
 
@@ -138,5 +149,14 @@ void qSlicerIconSwitchModuleWidget::addIconDisplay(QString iconPath)
   Q_D(qSlicerIconSwitchModuleWidget);
   QPushButton* button = new QPushButton();
   button->setIcon(QIcon(iconPath));
-  d->iconDisplayFrame->layout()->addWidget(button);
+  button->setToolTip(iconPath);
+  d->iconDisplayFrame->addWidget(button, nextAvailableRowForIconDisplay, nextAvailableColumnForIconDisplay);
+
+  nextAvailableColumnForIconDisplay++;
+  if (nextAvailableColumnForIconDisplay > 2)
+  {
+    nextAvailableColumnForIconDisplay = 0;
+    nextAvailableRowForIconDisplay++;
+  }
+
 }

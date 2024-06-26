@@ -9,5 +9,14 @@
         <file alias="MarkupsAddPointList.svg">Icons/Dark/MarkupsAddPointList.svg</file>
         <file alias="MarkupsAddROI.svg">Icons/Dark/MarkupsAddROI.svg</file>
         <file alias="IconSwitch.png">Icons/Dark/IconSwitch.png</file>
+        <file alias="Annotations.svg">Icons/Dark/Annotations.svg</file>
+        <file alias="DataModule.svg">Icons/Dark/DataModule.svg</file>
+        <file alias="DefaultModule.svg">Icons/Dark/DefaultModule.svg</file>
+        <file alias="MarkupsModule.svg">Icons/Dark/MarkupsModule.svg</file>
+        <file alias="ModelsModule.svg">Icons/Dark/ModelsModule.svg</file>
+        <file alias="SegmentEditorModule.svg">Icons/Dark/SegmentEditorModule.svg</file>
+        <file alias="TransformsModule.svg">Icons/Dark/TransformsModule.svg</file>
+        <file alias="VolumesModule.svg">Icons/Dark/VolumesModule.svg</file>
+        <file alias="WelcomeModule.svg">Icons/Dark/WelcomeModule.svg</file>
   </qresource>
 </RCC>

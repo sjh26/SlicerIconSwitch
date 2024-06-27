@@ -63,13 +63,10 @@ slicerMacroBuildLoadableModule(
   UI_SRCS ${MODULE_UI_SRCS}
   TARGET_LIBRARIES ${MODULE_TARGET_LIBRARIES}
   RESOURCES ${MODULE_RESOURCES}
+  LIGHT_ICONS ${LIGHT_ICON_RESOURCE}
+  DARK_ICONS ${DARK_ICON_RESOURCE}
   WITH_GENERIC_TESTS
   )
-
-
-qt5_add_binary_resources(LightResource ${LIGHT_ICON_RESOURCE} DESTINATION ${CMAKE_BINARY_DIR}/${Slicer_QTLOADABLEMODULES_SHARE_DIR}/${MODULE_NAME}/Icons/LightResource.rcc)
-qt5_add_binary_resources(DarkResource ${DARK_ICON_RESOURCE} DESTINATION ${CMAKE_BINARY_DIR}/${Slicer_QTLOADABLEMODULES_SHARE_DIR}/${MODULE_NAME}/Icons/DarkResource.rcc)
-add_dependencies(qSlicer${MODULE_NAME}Module LightResource DarkResource)
 
 #-----------------------------------------------------------------------------
 if(BUILD_TESTING)

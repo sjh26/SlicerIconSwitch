@@ -103,11 +103,11 @@ void qSlicerIconSwitchModule::setup()
   QSettings settingsApplication;
   QSettings settingsRegistry("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", QSettings::NativeFormat);
 
-  std::string resourcePath = iconSwitchLogic->GetModuleShareDirectory() + "/Icons/LightResource.rcc";
+  std::string resourcePath = iconSwitchLogic->GetModuleShareDirectory() + "/Icons/qSlicer" +  this->name().toStdString()+  "ModuleLightIcons.rcc";
 
   if (settingsApplication.value("Styles/Style", "Slicer").toString() == "Dark Slicer")
   {
-    resourcePath = iconSwitchLogic->GetModuleShareDirectory() + "/Icons/DarkResource.rcc";
+    resourcePath = iconSwitchLogic->GetModuleShareDirectory() + "/Icons/qSlicer" + this->name().toStdString() + "ModuleDarkIcons.rcc";
 
   }
   else if (settingsApplication.value("Styles/Style", "Slicer").toString() == "Slicer")
@@ -115,7 +115,7 @@ void qSlicerIconSwitchModule::setup()
 #ifdef Q_OS_WIN
     if (settingsRegistry.value("AppsUseLightTheme") == 0)
     {
-      resourcePath = iconSwitchLogic->GetModuleShareDirectory() + "/Icons/DarkResource.rcc";
+      resourcePath = iconSwitchLogic->GetModuleShareDirectory() + "/Icons/qSlicer" + this->name().toStdString() + "ModuleDarkIcons.rcc";
     }
 #endif
   }

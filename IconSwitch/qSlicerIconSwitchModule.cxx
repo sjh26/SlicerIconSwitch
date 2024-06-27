@@ -22,8 +22,6 @@
 #include "qSlicerIconSwitchModule.h"
 #include "qSlicerIconSwitchModuleWidget.h"
 
-#include <QResource>
-#include <QSettings>
 
 //-----------------------------------------------------------------------------
 class qSlicerIconSwitchModulePrivate
@@ -96,30 +94,7 @@ QStringList qSlicerIconSwitchModule::dependencies() const
 //-----------------------------------------------------------------------------
 void qSlicerIconSwitchModule::setup()
 {
-  this->Superclass::setup();
-
-  vtkSlicerIconSwitchLogic* iconSwitchLogic = vtkSlicerIconSwitchLogic::SafeDownCast(this->logic());
-
-  QSettings settingsApplication;
-  QSettings settingsRegistry("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", QSettings::NativeFormat);
-
-  std::string resourcePath = iconSwitchLogic->GetModuleShareDirectory() + "/Icons/qSlicer" +  this->name().toStdString()+  "ModuleLightIcons.rcc";
-
-  if (settingsApplication.value("Styles/Style", "Slicer").toString() == "Dark Slicer")
-  {
-    resourcePath = iconSwitchLogic->GetModuleShareDirectory() + "/Icons/qSlicer" + this->name().toStdString() + "ModuleDarkIcons.rcc";
-
-  }
-  else if (settingsApplication.value("Styles/Style", "Slicer").toString() == "Slicer")
-  {
-#ifdef Q_OS_WIN
-    if (settingsRegistry.value("AppsUseLightTheme") == 0)
-    {
-      resourcePath = iconSwitchLogic->GetModuleShareDirectory() + "/Icons/qSlicer" + this->name().toStdString() + "ModuleDarkIcons.rcc";
-    }
-#endif
-  }
-  QResource::registerResource(resourcePath.c_str());
+  this->Superclass::setup();  
 
 }
 

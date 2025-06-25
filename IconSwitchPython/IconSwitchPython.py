@@ -89,41 +89,11 @@ class IconSwitchPythonWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         self._parameterNodeGuiTag = None
 
     # Move this to qSlicerCoreApplication
-    # Maybe add a signal on this to detect change?
-    def getCurrentSlicerTheme(self):
-        settingsApplication = qt.QSettings()
-        settingsRegistry = qt.QSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", qt.QSettings.NativeFormat)
-    
-        if settingsApplication.value("Styles/Style", "Slicer") == "Dark Slicer":
-            return "Dark"
-
-        if settingsApplication.value("Styles/Style", "Slicer") == "Light Slicer":
-            return "Light"
-
-        if settingsApplication.value("Styles/Style", "Slicer") == "Slicer":        
-            import platform
-            if platform.system() == "Windows":
-                if settingsRegistry.value("AppsUseLightTheme") == 0:
-                    return "Dark"
-                else:
-                    return "Light"
-        
-        return "Light"
-
-    def setupThemeIcons(self, theme):
-        qt.QDir.setSearchPaths(self.moduleName,[self.resourcePath(f"Icons/{theme}"), self.resourcePath("Icons")])
-
-
-    def iconPath(self, name):
-        return f"{self.moduleName}:{name}"
-    
+    # Maybe add a signal on this to detect change?    
     
     def setup(self) -> None:
         """Called when the user opens the module the first time and the widget is initialized."""
         ScriptedLoadableModuleWidget.setup(self)
-
-        # Move to ScriptedLoadableModuleWidget
-        self.setupThemeIcons(self.getCurrentSlicerTheme())
 
         # Load widget from .ui file (created by Qt Designer).
         # Additional widgets can be instantiated manually and added to self.layout.
@@ -137,7 +107,7 @@ class IconSwitchPythonWidget(ScriptedLoadableModuleWidget, VTKObservationMixin):
         self.ui.pushButton_5.icon = qt.QIcon(self.iconPath("ModelsModule.svg"))
 
         # Non-theme icon
-        self.ui.pushButton_6.icon = qt.QIcon(self.iconPath("IconSwitchPython.png"))
+        self.ui.pushButton_6.icon = qt.QIcon(self.iconPath("NoTheme.png"))
 
         # Set scene in MRML widgets. Make sure that in Qt designer the top-level qMRMLWidget's
         # "mrmlSceneChanged(vtkMRMLScene*)" signal in is connected to each MRML widget's.

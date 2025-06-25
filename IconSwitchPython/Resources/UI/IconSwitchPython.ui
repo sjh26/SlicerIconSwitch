@@ -18,7 +18,7 @@
      </property>
      <property name="icon">
       <iconset>
-       <normaloff>IconSwitchPython:IconSwitch.png</normaloff>IconSwitchPython:IconSwitch.png</iconset>
+       <normaloff>IconSwitchPython:IconSwitchPython.png</normaloff>IconSwitchPython:IconSwitchPython.png</iconset>
      </property>
     </widget>
    </item>

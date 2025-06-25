@@ -9,6 +9,16 @@ set(MODULE_PYTHON_SCRIPTS
 set(MODULE_PYTHON_RESOURCES
   Resources/Icons/${MODULE_NAME}.png
   Resources/UI/${MODULE_NAME}.ui
+  Resources/Icons/Light/DataModule.svg
+  Resources/Icons/Light/DefaultModule.svg
+  Resources/Icons/Light/ModelsModule.svg
+  Resources/Icons/Light/WelcomeModule.svg
+  Resources/Icons/Light/IconSwitch.png
+  Resources/Icons/Dark/DataModule.svg
+  Resources/Icons/Dark/DefaultModule.svg
+  Resources/Icons/Dark/ModelsModule.svg
+  Resources/Icons/Dark/WelcomeModule.svg
+  Resources/Icons/Dark/IconSwitch.png
   )
 
 #-----------------------------------------------------------------------------
